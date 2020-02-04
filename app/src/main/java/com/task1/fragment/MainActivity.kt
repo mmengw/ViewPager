@@ -1,9 +1,11 @@
 package com.task1.fragment
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,12 +23,16 @@ class MainActivity : AppCompatActivity() {
         NBChange.setOnClickListener({
             if (isFragmentTwoLoaded)
                 ShowFragmentOne()
+                NBNum.setTextColor(Color.parseColor("#FF0000"))
+                PSNum.setTextColor(Color.parseColor("#40FF0000"))
         })
         val PSChange = findViewById<TextView>(R.id.PSNum)
         ShowFragmentTwo()
         PSChange.setOnClickListener({
             if (isFragmentOneLoaded)
                 ShowFragmentTwo()
+            PSNum.setTextColor(Color.parseColor("#FF0000"))
+            NBNum.setTextColor(Color.parseColor("#40FF0000"))
         })
     }
 
@@ -41,10 +47,11 @@ class MainActivity : AppCompatActivity() {
 
     fun ShowFragmentTwo() {
         val transaction = manager.beginTransaction()
-        val fragment = FragmentTwo()
+        val fragment = FragmentTwo(this@MainActivity)
         transaction.replace(R.id.fragment_holder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
         isFragmentOneLoaded = false
     }
+
 }

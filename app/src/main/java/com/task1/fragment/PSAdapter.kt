@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.task1.fragment.R
 import kotlinx.android.synthetic.main.fragment_two.view.*
 
-class PSAdapter (val context: Context, val policyService:ArrayList<PService>):RecyclerView.Adapter<PSAdapter.MyViewHolder>(){
+class PSAdapter (val context: Context, val policyService:List<PService>):RecyclerView.Adapter<PSAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):MyViewHolder{
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_two,parent,false)

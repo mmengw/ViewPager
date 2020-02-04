@@ -1,12 +1,17 @@
 package com.task1.fragment
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.task1.uidesign.BAdapter
+import com.task1.uidesign.Business
+import kotlinx.android.synthetic.main.activity_main.*
 
 class FragmentOne(val activity: MainActivity) : Fragment(){
 
@@ -20,6 +25,15 @@ class FragmentOne(val activity: MainActivity) : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG,"onCreate")
         super.onCreate(savedInstanceState)
+
+        /*val layoutManager = LinearLayoutManager(activity)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        recyclerView.layoutManager = layoutManager*/
+
+        val adapter = BAdapter(activity, Business.business)
+        recyclerView.adapter = adapter
+        //PSNum.setTextColor(Color.parseColor("#40FF0000"))
+
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d(TAG,"onCreateView")
@@ -65,5 +79,4 @@ class FragmentOne(val activity: MainActivity) : Fragment(){
         Log.d(TAG,"onDetach")
         super.onDetach()
     }
-
 }

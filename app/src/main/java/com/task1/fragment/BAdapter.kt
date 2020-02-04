@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.task1.fragment.R
 import kotlinx.android.synthetic.main.fragment_one.view.*
 
-class BAdapter (val context: Context, val business:ArrayList<Business>):RecyclerView.Adapter<BAdapter.MyViewHolder>(){
+class BAdapter (val context: Context, val business:List<Business>):RecyclerView.Adapter<BAdapter.MyViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):MyViewHolder{
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_one,parent,false)
         return MyViewHolder(view)

@@ -1,14 +1,19 @@
 package com.task1.fragment
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.task1.uidesign.PSAdapter
+import com.task1.uidesign.PService
+import kotlinx.android.synthetic.main.activity_main.*
 
-class FragmentTwo : Fragment(){
+class FragmentTwo(val activity: MainActivity) : Fragment(){
 
     val TAG = "FragmentTwo"
 
@@ -20,8 +25,16 @@ class FragmentTwo : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG,"onCreate")
         super.onCreate(savedInstanceState)
-    }
 
+        /*val layoutManager = LinearLayoutManager(activity)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        recyclerView.layoutManager = layoutManager*/
+
+        val adapter = PSAdapter(activity,PService.policyService)
+        recyclerView.adapter = adapter
+        //NBNum.setTextColor(Color.parseColor("#40FF0000"))
+
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d(TAG,"onCreateView")
         return inflater!!.inflate(R.layout.fragment_two,container,false)
