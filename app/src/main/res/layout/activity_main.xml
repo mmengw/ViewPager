@@ -112,13 +112,11 @@
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:layout_editor_absoluteX="11dp" />
-
-    <FrameLayout
-        android:id="@+id/fragment_holder"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView6"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
