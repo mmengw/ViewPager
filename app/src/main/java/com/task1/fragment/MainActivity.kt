@@ -11,50 +11,29 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    //this maybe need to change to false
-    var isFragmentOneLoaded = false
-    var isFragmentTwoLoaded = false
-    val manager = supportFragmentManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val NBChange = findViewById<TextView>(R.id.NBNum)
-        ShowFragmentTwo()
-        NBChange.setOnClickListener({
-            if (isFragmentTwoLoaded)
-                ShowFragmentOne()
-                NBNum.setTextColor(Color.parseColor("#FF0000"))
-                PSNum.setTextColor(Color.parseColor("#40FF0000"))
-        })
+        val frag1 = FragmentOne()
+        val frag2 = FragmentTwo()
+        val pagerAdapter = object : FragmentPagerAdapter(supportFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
+            override fun getCount(): Int {
+                return 2
+            }
 
-        val PSChange = findViewById<TextView>(R.id.PSNum)
-        ShowFragmentOne()
-        PSChange.setOnClickListener({
-            if (isFragmentOneLoaded)
-               ShowFragmentTwo()
-               PSNum.setTextColor(Color.parseColor("#FF0000"))
-               NBNum.setTextColor(Color.parseColor("#40FF0000"))
-       })
-    }
+            override fun getItem(position: Int): Fragment {
+                if(position == 0){
+                    return frag1
+                }
+                else{
+                    return frag2
+                }
+            }
+        }
 
-    fun ShowFragmentOne() {
-        val transaction = manager.beginTransaction()
-        val fragment = FragmentOne()
-        transaction.replace(R.id.fragment_holder, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-        isFragmentOneLoaded = true
-    }
-
-    fun ShowFragmentTwo() {
-        val transaction = manager.beginTransaction()
-        val fragment = FragmentTwo()
-        transaction.replace(R.id.fragment_holder, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-        isFragmentTwoLoaded = true
+        viewPager.adapter = pagerAdapter
+        viewPager.offscreenPageLimit = 2
     }
 
 }
