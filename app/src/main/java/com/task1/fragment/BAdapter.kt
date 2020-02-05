@@ -41,7 +41,7 @@ class BAdapter (val context: Context, val business:List<Business>):RecyclerView.
             this.currentPolicyNo=policyNO
             this.currentBPosition=Position
 
-
+//testing
         }
     }
 
