@@ -28,14 +28,14 @@
 
             <TextView
                 android:id="@+id/textView10"
-                android:layout_width="69dp"
+                android:layout_width="86dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:textColor="#FF5722"
                 android:gravity="center"
-                android:text="Awaiting General Document" />
+                android:text="Awaiting General Document"
+                android:textColor="#FF5722"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

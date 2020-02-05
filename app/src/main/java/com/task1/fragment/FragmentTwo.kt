@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.task1.uidesign.PSAdapter
 import com.task1.uidesign.PService
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_four.*
 
-class FragmentTwo(val activity: MainActivity) : Fragment(){
+class FragmentTwo : Fragment(){
 
     val TAG = "FragmentTwo"
 
@@ -25,19 +26,20 @@ class FragmentTwo(val activity: MainActivity) : Fragment(){
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG,"onCreate")
         super.onCreate(savedInstanceState)
+    }
 
-        /*val layoutManager = LinearLayoutManager(activity)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val layoutManager = LinearLayoutManager(activity)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
-        recyclerView.layoutManager = layoutManager*/
+        recyclerview3.layoutManager = layoutManager
 
-        val adapter = PSAdapter(activity,PService.policyService)
-        recyclerView.adapter = adapter
-        //NBNum.setTextColor(Color.parseColor("#40FF0000"))
-
+        val adapter = PSAdapter(context!!, PService.policyService)
+        recyclerview3.adapter = adapter
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Log.d(TAG,"onCreateView")
-        return inflater!!.inflate(R.layout.fragment_two,container,false)
+        return inflater!!.inflate(R.layout.fragment_four,container,false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
